@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import HeroSectionContainer from "./components/HeroSectionContainer";
+import {Spring} from "react-spring/renderprops";
+import CardsContainer from "./components/CardsContainer";
+import Contact from "./components/Contact";
+import Feature from "./components/Feature";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <HeroSectionContainer/>
+          <Spring
+            from={{opacity:0}}
+            to={{opacity:1}}
+            config={{delay:2500, duration:2500}}    
+          >
+              {(props)=>
+                <div style={props}>
+                    <CardsContainer/>
+                    <Feature/>
+                    <Contact/>
+                </div>
+              }
+          </Spring>
     </div>
   );
 }
